@@ -1,1 +1,1 @@
-/* Add Author and Project Details here */
+/* Author: Diana Compagnone    Project: Week 1 application assignment*/

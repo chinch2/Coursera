@@ -9,13 +9,13 @@
  *
  *****************************************************************************/
 /**
- * @file <Add File Name> 
- * @brief <Add Brief Description Here >
+ * @file stats.c 
+ * @brief Reads in arrays, analyses, sorts and prints data.
  *
  * <Add Extended Description Here>
  *
- * @author <Add FirsName LastName>
- * @date <Add date >
+ * @author Diana Compagnone
+ * @date May 10, 2018
  *
  */
 
@@ -41,3 +41,31 @@ void main() {
 }
 
 /* Add other Implementation File Code Here */
+
+void print_statistics() {
+
+}
+
+void print_array( unsigned char *array ) {
+
+}
+
+unsigned int find_median( unsigned char *array ) {
+
+}
+
+unsigned int find_mean( unsigned char *array ) {
+
+}
+
+unsigned int find_maximum( unsigned char *array ) {
+
+}
+
+unsigned int find_minimum( unsigned char *array ) {
+
+}
+
+unsigned char[] sort_array( unsigned char *array ) {
+
+}
