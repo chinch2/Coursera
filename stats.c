@@ -39,10 +39,6 @@ void main() {
   /* Other Variable Declarations Go Here */
   /* Statistics and Printing Functions Go Here */
 
-  unsigned int median;
-  unsigned int max;
-  unsigned int min;
-
   print_array(test);
   print_statistics(test);
 
@@ -50,7 +46,6 @@ void main() {
 
 /* Add other Implementation File Code Here */
 
-//Verified working
 void print_statistics( unsigned char *array ) {
   unsigned int median;
   unsigned int mean;
@@ -69,7 +64,6 @@ void print_statistics( unsigned char *array ) {
 
 }
 
-//Verified working
 void print_array( unsigned char *array ) {
   
   printf( "Printing array: [");
@@ -79,7 +73,6 @@ void print_array( unsigned char *array ) {
   printf( "]\n");
 }
 
-//Verified working
 unsigned char find_median( unsigned char *array ) {
   
   unsigned int temp = 0;
@@ -94,7 +87,6 @@ unsigned char find_median( unsigned char *array ) {
 
 }
 
-//Verified working
 unsigned char find_mean( unsigned char *array ) {
   
   sort_array(array);
@@ -102,7 +94,6 @@ unsigned char find_mean( unsigned char *array ) {
   return array[SIZE/2];
 }
 
-//Verified working
 unsigned char find_maximum( unsigned char *array ) {
   
   unsigned char temp = 0;
@@ -116,7 +107,6 @@ unsigned char find_maximum( unsigned char *array ) {
   return temp;
 }
 
-//Verified working
 unsigned char find_minimum( unsigned char *array ) {
   
   unsigned char temp = 255;
@@ -131,7 +121,6 @@ unsigned char find_minimum( unsigned char *array ) {
 
 }
 
-//Verified working
 unsigned char sort_array( unsigned char *array ) {
   
   for( char i = 0; i < SIZE; i++ ) {
