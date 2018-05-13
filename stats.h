@@ -30,7 +30,7 @@
  *
  * @return none
  */
-void print_statistics();
+void print_statistics( unsigned char *array );
 
 /**
  * @brief Prints array to the screen
@@ -52,7 +52,7 @@ void print_array( unsigned char *array );
  *
  * @return The median of array
  */
-unsigned int find_median( unsigned char *array );
+unsigned char find_median( unsigned char *array );
 
 /**
  * @brief Finds mean of array
@@ -63,7 +63,7 @@ unsigned int find_median( unsigned char *array );
  *
  * @return The mean of array
  */
-unsigned int find_mean( unsigned char *array );
+unsigned char find_mean( unsigned char *array );
 
 /**
  * @brief Finds maximum of array
@@ -74,7 +74,7 @@ unsigned int find_mean( unsigned char *array );
  *
  * @return The maximum of array
  */
-unsigned int find_maximum( unsigned char *array );
+unsigned char find_maximum( unsigned char *array );
 
 /**
  * @brief Finds minimum of array
@@ -85,18 +85,20 @@ unsigned int find_maximum( unsigned char *array );
  *
  * @return The minimum of array
  */
-unsigned int find_minimum( unsigned char *array );
+unsigned char find_minimum( unsigned char *array );
 
 /**
  * @brief Sorts array from largest to smallest
  *
  * Given an array of data and a length, sorts array from largest to smallest.
- * Element 0 is largest value, last elemenet is smallest value
+ * Element 0 is largest value, last elemenet is smallest value. Implemented
+ * a bubble sort.
  *
  * @param array The array to sort
  *
  * @return The sorted array
  */
-unsigned char[] sort_array( unsigned char *array );
+unsigned char sort_array( unsigned char *array );
+
 
 #endif /* __STATS_H__ */
