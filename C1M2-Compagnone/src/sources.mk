@@ -10,8 +10,30 @@
 #*****************************************************************************
 
 # Add your Source files to this variable
-SOURCES =
+# The list of source files that will need to be compiled (Platform Specific)
+ifeq ($(PLATFORM),HOST)
+  SOURCES =             \
+  	./main.c        \
+  	./memory.c
+endif	
+ifeq ($(PLATFORM),MSP432)
+  SOURCES =		\
+  	./main.c	\
+  	./memory.c	\
+	./interrupts_msp432p401r_gcc.c	\
+	./startup_msp432p401r_gcc.c	\
+	./system_msp432p401r.c
+endif
 
 # Add your include paths to this variable
-INCLUDES = 
+# The list of include directories (Hing: Use the -I flag)
+ifeq ($(PLATFORM),MSP432)
+  INCLUDES =                   \
+	-I../include/msp432/   \
+	-I../include/common/   \
+	-I../include/CMSIS/
+endif
+ifeq ($(PLATFORM),HOST)
+  INCLUDES = -I../include/common/
+endif
 
