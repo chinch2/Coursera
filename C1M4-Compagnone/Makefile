@@ -25,7 +25,8 @@ include sources.mk
 
 # Platform Overrides
 # The target platform you are compiling for (Platform specific)
-PLATFORM = 
+PLATFORM =
+DEBUG = 0 
 
 # Architectures Specific Flags
 ifeq ($(PLATFORM),MSP432)
@@ -33,6 +34,14 @@ ifeq ($(PLATFORM),MSP432)
   CPU = cortex-m4
   ARCH = armv7e-m
   SPECS = nosys.specs
+endif
+
+# Debug flags
+ifeq ($(DEBUG),1)
+  DBGFLAGS = -DDEBUG
+endif
+ifeq ($(VERBOSE),1)
+  VBFLAGS = -DVERBOSE
 endif
 
 # Compiler Flags and Defines
@@ -69,12 +78,12 @@ endif
 .PHONY: build
 build: c1m2.out
 c1m2.out: $(SOURCES)
-	$(CC) $(SOURCES) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -o c1m2.out
+	$(CC) $(SOURCES) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(VBFLAGS) $(DBGFLAGS) -o c1m2.out
 	size c1m2.out
 
 .PHONY: compile-all
 compile-all: $(SOURCES)
-	$(CC) $(SOURCES) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -c
+	$(CC) $(SOURCES) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(VBFLAGS) $(DBGFLAGS) -c
 
 .PHONY: clean
 clean:

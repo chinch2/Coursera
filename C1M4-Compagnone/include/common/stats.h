@@ -19,6 +19,8 @@
 #ifndef __STATS_H__
 #define __STATS_H__
 
+#include "platform.h"
+
 /* Add Your Declarations and Function Comments here */ 
 
 /**
@@ -98,7 +100,7 @@ unsigned char find_minimum( unsigned char *array );
  *
  * @return The sorted array
  */
-unsigned char sort_array( unsigned char *array );
+void sort_array( unsigned char *array );
 
 
 #endif /* __STATS_H__ */

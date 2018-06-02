@@ -28,7 +28,7 @@
 /* Size of the Data Set */
 #define SIZE (40)
 
-void main() {
+void main_stats() {
 
   unsigned char test[SIZE] = { 34, 201, 190, 154,   8, 194,   2,   6,
                               114, 88,   45,  76, 123,  87,  25,  23,
@@ -41,6 +41,7 @@ void main() {
 
   print_array(test);
   print_statistics(test);
+  print_array(test);
 
 }
 
@@ -66,11 +67,13 @@ void print_statistics( unsigned char *array ) {
 
 void print_array( unsigned char *array ) {
   
-  printf( "Printing array: [");
+#ifdef VERBOSE
+  PRINTF( "Printing array: [");
   for( int i = 0; i < SIZE; i++ ){
-     printf("%i ", array[i]);
+     PRINTF("%i ", array[i]);
   }
-  printf( "]\n");
+  PRINTF( "]\n");
+#endif
 }
 
 unsigned char find_mean( unsigned char *array ) {
@@ -121,10 +124,12 @@ unsigned char find_minimum( unsigned char *array ) {
 
 }
 
-unsigned char sort_array( unsigned char *array ) {
-  
-  for( char i = 0; i < SIZE; i++ ) {
-    for( char j = 0; j < SIZE; j++ ){
+void sort_array( unsigned char *array ) {
+  unsigned char i;
+  unsigned char j;
+
+  for( i = 0; i < SIZE; i++ ) {
+    for( j = 0; j < SIZE; j++ ){
       if( array[j] < array[i] ) {
         unsigned char temp = array[i];
         array[i] = array[j];
