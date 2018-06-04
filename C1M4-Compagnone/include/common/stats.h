@@ -40,10 +40,11 @@ void print_statistics( unsigned char *array );
  * Given an array of data and length, prints the array to the screen
  *
  * @param array The array to be printed
+ * @param size Size of the array
  *
- * @return <Add Return Informaiton here>
+ * @return null
  */
-void print_array( unsigned char *array );
+void print_array( unsigned char *array, unsigned char size );
 
 /**
  * @brief Finds median of array

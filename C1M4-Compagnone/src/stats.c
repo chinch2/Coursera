@@ -39,9 +39,9 @@ void main_stats() {
   /* Other Variable Declarations Go Here */
   /* Statistics and Printing Functions Go Here */
 
-  print_array(test);
+  print_array(test, SIZE);
   print_statistics(test);
-  print_array(test);
+  print_array(test, SIZE);
 
 }
 
@@ -65,11 +65,13 @@ void print_statistics( unsigned char *array ) {
 
 }
 
-void print_array( unsigned char *array ) {
+void print_array( unsigned char *array, unsigned char size ) {
   
 #ifdef VERBOSE
+  unsigned char i;
+
   PRINTF( "Printing array: [");
-  for( int i = 0; i < SIZE; i++ ){
+  for( i = 0; i < size; i++ ){
      PRINTF("%i ", array[i]);
   }
   PRINTF( "]\n");

@@ -26,7 +26,6 @@ include sources.mk
 # Platform Overrides
 # The target platform you are compiling for (Platform specific)
 PLATFORM =
-DEBUG = 0 
 
 # Architectures Specific Flags
 ifeq ($(PLATFORM),MSP432)
@@ -38,7 +37,7 @@ endif
 
 # Debug flags
 ifeq ($(DEBUG),1)
-  DBGFLAGS = -DDEBUG
+  DBGFLAGS = -DCOURSE1
 endif
 ifeq ($(VERBOSE),1)
   VBFLAGS = -DVERBOSE
