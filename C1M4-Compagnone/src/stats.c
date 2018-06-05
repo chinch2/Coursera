@@ -70,11 +70,11 @@ void print_array( unsigned char *array, unsigned char size ) {
 #ifdef VERBOSE
   unsigned char i;
 
-  PRINTF( "Printing array: [");
+  printf( "Printing array: [");
   for( i = 0; i < size; i++ ){
-     PRINTF("%i ", array[i]);
+     printf("%i, ", array[i]);
   }
-  PRINTF( "]\n");
+  printf( "]\n");
 #endif
 }
 

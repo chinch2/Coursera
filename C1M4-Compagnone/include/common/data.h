@@ -22,6 +22,11 @@
 #include <stdint.h>
 #include <stddef.h>
 
+#define BASE_2     (2)
+#define BASE_8     (8)
+#define BASE_10   (10)
+#define BASE_16   (16)
+
 /* Add Your Declarations and Function Comments here */ 
 
 /**

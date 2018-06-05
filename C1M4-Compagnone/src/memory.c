@@ -50,47 +50,101 @@ void clear_all(char * ptr, unsigned int size){
 
 uint8_t * my_memmove(uint8_t * src, uint8_t * dst, size_t length) {
   
-  if ((src == null) || (dst == null)) {
-    print "Warning! Passed in null array\n";
+  size_t i;
+  bool overlap = false;
+
+  if ((src == NULL) || (dst == NULL)) {
+    printf ("Warning! Passed in null array\n");
   }
 
-  if ((src <= dst) && (dst <= src + length)) {
+  if (((src + length) < src) || (dst + length) < dst) {
+    printf ("Warning! Wrapped around memory\n");
+  }
+  
+  if ((src < dst) && (dst < (src + length))) {
+    overlap = true;
+  }
+  
+  if (!overlap) {
+    my_memcopy (src, dst, length);
+    
+  } else {
+    dst = dst + length -1;
+    src = src + length -1; 
 
-  } 
+    for (i = length; i > 0; --i) {
+
+      *dst = *src;
+      --dst;
+      --src;
+    } 
+  }
   return dst;
 }
 
 uint8_t * my_memcopy(uint8_t * src, uint8_t * dst, size_t length) {
+  
+  size_t i;
 
-
+  for (i = 0; i < length; i++) {
+    *dst = *src;
+    dst++;
+    src++;
+  }
+  
   return dst;
 }
 
 uint8_t * my_memset(uint8_t * src, size_t length, uint8_t value) {
+  
+  size_t i;
 
+  for (i = 0; i < length; i++) {
+    *src = value;
+    src++;
+  }
 
   return src;
 }
 
 uint8_t * my_memzero(uint8_t * src, size_t length) {
 
+  size_t i;
+
+  for (i = 0; i < length; i++) {
+    *src = 0;
+    src++;
+  }
 
   return src;
 }
 
 uint8_t * my_reverse(uint8_t * src, size_t length) {
+  
+  size_t low, high;
+  uint8_t temp;
 
+  for  (low = 0, high = length - 1; high > low; low++, high--) {
+    temp = *(src + low);
+    *(src + low) = *(src + high);
+    *(src + high) = temp;
+  }
 
   return src;
 }
 
 int32_t * reserve_words(size_t length) {
-  int32_t * ptr = 0;
+  
+  int32_t * ptr = malloc(length * sizeof(size_t));
+
+  if (ptr == NULL) {
+    printf("Warning! Malloc failed");
+  }
 
   return ptr;
 }
 
 void free_words(uint32_t * src) {
-
+  free(src);
 }
 
