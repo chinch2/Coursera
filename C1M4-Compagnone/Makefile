@@ -29,7 +29,7 @@ PLATFORM =
 
 # Architectures Specific Flags
 ifeq ($(PLATFORM),MSP432)
-  LINKER_FILE = ../msp432p401r.lds
+  LINKER_FILE = ./msp432p401r.lds
   CPU = cortex-m4
   ARCH = armv7e-m
   SPECS = nosys.specs

@@ -21,6 +21,8 @@
 
 #include <stdint.h>
 #include <stddef.h>
+#include "memory.h"
+#include "stats.h"
 
 #define BASE_2     (2)
 #define BASE_8     (8)

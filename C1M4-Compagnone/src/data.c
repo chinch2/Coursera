@@ -20,78 +20,64 @@
  */
 
 #include "data.h"
-#include "memory.h"
-#include <stdio.h>
 
 uint8_t my_itoa(int32_t data, uint8_t * ptr, uint32_t base) {
   
-  uint32_t i = data;
-  uint8_t count;
+  uint8_t count = 0;
   int8_t sign = 1;
   int32_t remainder;
 
-  if (base == 16) {
-    printf("i: %i\n", i);
-    while (i != 0) {
-      i /= 0x10;
-      count++;
-    }
+  if (data == 0) {
+    *ptr = '0';
+    ptr++;
+    *ptr = '\0';
+    --ptr;
+    return 1;
   }
 
-  if (base == 10) {
-    if (data < 0) {
-      sign = -1;
-    }
-    while (i != 0) {
-      i /= 10;
-      count++;
-    }
+  *ptr = '\0';
+  ptr++;
+  count++;
+
+  if (data < 0) {
+    sign = -1;
+    data = -data;
   }
 
   while (data != 0) {
-    remainder = data % base;
+    remainder = data % (int32_t)base;
     *ptr = (remainder > 9) ? (remainder - 10) + 'a' : remainder + '0';
     data = data/base;
     ptr++;
+    count++;
   }
 
   if (sign == -1) {
     *ptr = '-';
     ptr++;
+    count++;
   }
 
-  *ptr = '\0';
+  my_reverse(ptr - count, count);
 
-  my_reverse (ptr, count);
-
-  printf("number of digits: %i\n", count);
   return count;
 }
 
 int32_t my_atoi(uint8_t * ptr,  uint8_t digits, uint32_t base) {
-  int8_t converted;
+  int32_t converted = 0;
   uint8_t i;
   int8_t sign = 1;
 
   if (*ptr == '-') {
     sign = -1;
     ptr++;
+    digits--;
   }
 
-  if (base == 16) {
-    for (i = 0; *ptr != '\0'; ++i) {
-      converted = converted * 0x10 + *ptr - '0';
-      ptr++;
-    }
+  for (i = 0; i < digits-1; ++i) {
+    converted = converted * base + (*ptr - '0');
+    ptr++;
   }
-
-  if  (base == 10) {
-    for (i = 0; *ptr != '\0'; i++) {
-      converted = converted * 10 + *ptr - '0';
-      ptr++;
-    }
-  }
-
 
   return sign*converted;
 }
